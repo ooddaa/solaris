@@ -1,0 +1,194 @@
+/* 
+SPACING SYSTEM (px) 
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+/* 
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+*/
+
+/* 
+COLORS SYSTEM 
+MAIN: 
+GREY: 
+#444
+#49403E
+#F3F3F3
+WHITE:
+#FAFAFA
+#FFF
+*/
+
+/* Margin and padding resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+  /* padding-bottom: var(--footer-height); */
+  
+  color: #444;
+}
+
+body, h1, h2, h3, h4, p, li {
+  font-size: 20px;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+ul {
+  list-style: circle;
+}
+
+:root {
+  --navbar-left-width: 40px;
+
+  --top-logo-bar-height: 24px;
+  --top-menu-bar-height: 48px;
+  --footer-height: 42px;
+
+  --app-workspace-header-height: 48px;
+  --app-workspace-footer-height: 32px;
+
+  --navbar-left-height: calc(
+    100vh 
+    - var(--top-logo-bar-height) 
+    - var(--top-menu-bar-height) 
+    - var(--footer-height));
+
+  --app-workspace-body-height: calc(
+    100vh 
+    - var(--top-logo-bar-height) 
+    - var(--top-menu-bar-height) 
+    - var(--footer-height) 
+    - var(--app-workspace-header-height) 
+    - var(--app-workspace-footer-height)
+    );
+}
+
+
+.MangoUI {
+  background: red;
+}
+
+.top-logo-bar {
+  height: var(--top-logo-bar-height);
+  background-color: #49403E;
+
+  /* center child */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-logo-bar p {
+  font-size: 10px;
+  color: #fff;
+}
+
+.top-menu-bar {
+  height: var(--top-menu-bar-height);
+  background-color: #FAFAFA;
+
+  /* center child */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-menu-bar p {
+  font-size: 20px;
+  text-transform:uppercase;
+  color: #444;
+}
+
+/* .top-menu-bar p:hover {
+  color: orangered
+} */
+
+.App-header {
+  /* color: red; */
+}
+
+.App-main {
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  background-color: #E5E5E5;
+}
+
+.App-nav {
+  width: var(--navbar-left-width);
+  height: 100%;
+}
+
+.navbar-left {
+  /* this allows to stick AppFooter on the bottom */
+  /* 100% of veiwport height - --top-logo-bar-height - --top-menu-bar-height - --footer-height */
+  height: var(--navbar-left-height); 
+
+  color: #FFF;
+  background-color: orange;
+  border: 1px solid red;
+}
+
+.App-workspace {
+  width: 100%;
+
+  background-color: #61dafb;
+  position: relative;
+}
+
+.App-workspace-header {
+  height: var(--app-workspace-header-height);
+
+  border: 2px solid green;
+}
+
+.App-workspace-body {
+  /* compute height */
+  height: var(--app-workspace-body-height);
+
+  border: 2px solid red;
+  background-color: rgb(238, 238, 167);
+}
+
+.App-workspace-footer {
+  width: 100%;
+  height: var(--app-workspace-footer-height);
+  display: block; /* stretch element */
+
+  /* set parents position: realative; and stick footer to bottom */
+  position: absolute;
+  bottom: 0; 
+
+  background-color: rgb(117, 114, 114);
+  color: #FFF;
+  border: red 1px solid;
+}
+
+.App-footer {
+  width: 100%;
+  /* --footer-height: 42px; */
+  height: var(--footer-height, 1000px);
+
+  background-color: #444;
+}
+
+.Form {
+  padding: 10px;
+  border: black 1px solid;
+}
+
+.Chat {
+  padding: 10px;
+  border: black 1px solid;
+}
