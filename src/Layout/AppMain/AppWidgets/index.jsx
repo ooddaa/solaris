@@ -1,9 +1,9 @@
-import Form from './Form'
-import Chat from './Chat'
+import Form from "./Form";
+import Chat from "./Chat";
 
 function AppWidgets() {
   return (
-    <div className='App-widgets'>
+    <div className="App-widgets">
       <Form></Form>
       <Chat></Chat>
     </div>
