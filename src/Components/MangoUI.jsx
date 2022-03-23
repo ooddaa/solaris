@@ -1,6 +1,6 @@
-import AppHeader from "../Layout/AppHeader";
-import AppMain from "../Layout/AppMain";
-import AppFooter from "../Layout/AppFooter";
+import AppHeader from "../Layout/AppHeader/AppHeader";
+import AppMain from "../Layout/AppMain/AppMain";
+import AppFooter from "../Layout/AppFooter/AppFooter";
 
 function MangoUI() {
   return (

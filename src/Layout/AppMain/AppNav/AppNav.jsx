@@ -1,4 +1,4 @@
-import NavBarLeft from "./NavBarLeft";
+import NavBarLeft from "./NavBarLeft/NavBarLeft";
 
 function AppNav() {
   return (

@@ -1,5 +1,5 @@
-import TopLogoBar from "./TopLogoBar";
-import TopMenuBar from "./TopMenuBar";
+import TopLogoBar from "./TopLogoBar/TopLogoBar";
+import TopMenuBar from "./TopMenuBar/TopMenuBar";
 
 function AppHeader() {
   return (
