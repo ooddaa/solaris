@@ -191,13 +191,7 @@ ________________________________________________________*/
   color: var(--black);
 }
 
-/* Dropzone
-________________________________________________________*/
 
-.dropzone {
-  background-color: #e9b9ae;
-  height: 200px;
-}
 
 /* File Card
 ________________________________________________________*/
@@ -228,12 +222,12 @@ ________________________*/
 ________________________*/
 .file-card__body__left-side {
   border: rgb(0, 38, 128) .0005rem solid;
-  width: 50%
+  width: 25%
 }
 
-/* File Card RIGHT side
+/* File Card CENTER side
 ________________________*/
-.file-card__body__right-side {
+.file-card__body__center-side {
   border: rgb(0, 87, 128) .0005rem solid;
   width: 50%
 }
@@ -242,6 +236,15 @@ ________________________*/
   height: 100%;
   width: 100%;
 }
+
+/* File Card RIGHT side
+________________________*/
+.file-card__body__right-side {
+  border: rgb(0, 87, 128) .0005rem solid;
+  width: 25%
+}
+
+
 
 /* File Card FOOTER
 ________________________*/
@@ -264,6 +267,14 @@ ________________________________________________________*/
   width: var(--app-widgets-width);
   background-color: var(--white);
   border-left: var(--light-grey-separator);
+}
+
+/* Dropzone
+________________________________________________________*/
+
+.app-widgets__dropzone {
+  background-color: #e9b9ae;
+  height: 200px;
 }
 
 /* Footer

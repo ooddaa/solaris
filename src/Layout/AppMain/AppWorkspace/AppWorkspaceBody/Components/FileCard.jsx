@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import * as fs from 'fs';
+import Dropzone from '../../../AppWidgets/Dropzone/Dropzone';
 
 function SolarisFile(file, fileMetaData) {
     return { file, meta: fileMetaData }
@@ -27,16 +27,26 @@ function FileCard({ file }) {
                 <div className="file-card__size">size: {size}</div>
                 <div className="file-card__type">type: {type}</div>
             </div>
+            <div className="file-card__body__center-side">
+                <textarea 
+                    className="file-card-textarea" 
+                    id="fileCardDescription" 
+                    placeholder="Describe file here"
+                    // value={enitityForm.description}
+                    onChange={e => console.log(e.target.value)}
+                >
+                </textarea>
+            </div>
             <div className="file-card__body__right-side">
-                
-                        <textarea 
-                            className="file-card-textarea" 
-                            id="fileCardDescription" 
-                            placeholder="Describe file here"
-                            // value={enitityForm.description}
-                            onChange={e => console.log(e.target.value)}
-                        >
-                        </textarea>
+                <div className="file-card-tags">
+                    <Dropzone 
+                        classNames={['file-card-tags__dropzone']}
+                        handleDrop={(e) => console.log(e)}
+                        // activeMsg={'dropping some tags'}
+                        passiveMsg={'drop tags here'}
+                    />
+                </div>
+                        
             </div>
         
         

@@ -1,24 +1,35 @@
-import React, {useCallback} from 'react'
-import {useDropzone} from 'react-dropzone'
+import React, {useCallback} from 'react';
+import {useDropzone} from 'react-dropzone';
 
-function Dropzone({ handleDropzoneFiles }) {
+function Dropzone({ handleDrop, classNames, activeMsg, passiveMsg }) {
   const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-    console.log(acceptedFiles)
+    handleDrop(acceptedFiles);
+  }, [handleDrop])
+  const {
+    getRootProps, 
+    getInputProps, 
+    isDragActive, 
+    // acceptedFiles
+  } = useDropzone({onDrop})
 
-    /* send File[] up to AppMain */
-    handleDropzoneFiles(acceptedFiles);
-  }, [handleDropzoneFiles])
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+  // const files = acceptedFiles.map(file => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ));
 
   return (
-    <div className='dropzone'{...getRootProps()}>
+    <div className={classNames.join(" ")} {...getRootProps()}>
       <input {...getInputProps()} />
       {
         isDragActive ?
-          <p>Drop the files here ...</p> :
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p>{activeMsg}</p> :
+          <p>{passiveMsg}</p>
       }
+      {/* <aside>
+        <h4>Files</h4>
+        <ul>{files}</ul>
+      </aside> */}
     </div>
   )
 }
