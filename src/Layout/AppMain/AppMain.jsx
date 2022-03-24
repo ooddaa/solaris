@@ -20,8 +20,14 @@ function AppMain() {
   }
   return (
     <div className='App-main'>
-      <AppNav />
+      {/* AppNav on the left will display a list of files that 
+      represent their status - edited, submitted, discarded */}
+      <AppNav acceptedFiles={acceptedFiles}/>
+
+      {/* Main workspace where files are enhanced by the user */}
       <AppWorkspace acceptedFiles={acceptedFiles}/>
+
+      {/* Dropzone on the right upper corner is where files get dropped */}
       <AppWidgets handleDropzoneFiles={handleDropzoneFiles}/>
     </div>
   );

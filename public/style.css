@@ -203,12 +203,58 @@ ________________________________________________________*/
 ________________________________________________________*/
 .file-card {
   display: flex;
-  /* height: 100%; */
+  flex-direction: column;
   padding-top: 10px;
+  padding: 10px;
+}
+
+/* File Card HEADER
+________________________*/
+.file-card__header {
+  border: black .0005rem solid;
+  background-color: wheat;
+}
+
+/* File Card BODY
+________________________*/
+.file-card__body {
+  display: flex;
+  border: green .0005rem solid;
+  background-color: white;
+}
+
+
+/* File Card LEFT side
+________________________*/
+.file-card__body__left-side {
+  border: rgb(0, 38, 128) .0005rem solid;
+  width: 50%
+}
+
+/* File Card RIGHT side
+________________________*/
+.file-card__body__right-side {
+  border: rgb(0, 87, 128) .0005rem solid;
+  width: 50%
+}
+
+.file-card-textarea {
+  height: 100%;
+  width: 100%;
+}
+
+/* File Card FOOTER
+________________________*/
+.file-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: rgba(233, 32, 116, 0.739) .0005rem solid;
+  background-color: rgb(186, 211, 153);
 }
 
 .file-card * {
-  border: red .005rem solid;
+  /* border: red .005rem solid; */
 }
 
 
