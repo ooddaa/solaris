@@ -8,7 +8,7 @@ function Dropzone({ handleDropzoneFiles }) {
 
     /* send File[] up to AppMain */
     handleDropzoneFiles(acceptedFiles);
-  }, [])
+  }, [handleDropzoneFiles])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
   return (

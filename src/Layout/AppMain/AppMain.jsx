@@ -16,8 +16,7 @@ import { useState } from 'react';
 function AppMain() {
   const [acceptedFiles, setAcceptedFiles] = useState([]);
   function handleDropzoneFiles(files) {
-    console.log('handleDropzoneFiles fires')
-    setAcceptedFiles(files)
+    setAcceptedFiles(files);
   }
   return (
     <div className='App-main'>

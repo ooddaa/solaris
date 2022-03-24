@@ -153,9 +153,8 @@ ul {
   border-right: var(--light-grey-separator);
 }
 
-/*****************\
-**** WORKSPACE ****
-\*****************/
+/* Workspace
+________________________________________________________*/
 .App-workspace {
   width: 100%;
 
@@ -200,18 +199,29 @@ ________________________________________________________*/
   height: 200px;
 }
 
-/*****************\
-***** WIDGETS *****
-\*****************/
+/* File Card
+________________________________________________________*/
+.file-card {
+  display: flex;
+  /* height: 100%; */
+  padding-top: 10px;
+}
+
+.file-card * {
+  border: red .005rem solid;
+}
+
+
+/* Widgets
+________________________________________________________*/
 .App-widgets {
   width: var(--app-widgets-width);
   background-color: var(--white);
   border-left: var(--light-grey-separator);
 }
 
-/*****************\
-***** FOOTER  *****
-\*****************/
+/* Footer
+________________________________________________________*/
 .App-footer {
   width: 100%;
   flex: 0 0 var(--footer-height, 1000px);
