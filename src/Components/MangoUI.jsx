@@ -7,7 +7,7 @@ function MangoUI() {
     <div className="MangoUI">
       <AppHeader></AppHeader>
       <AppMain></AppMain>
-      <AppFooter></AppFooter>
+      {/* <AppFooter></AppFooter> */}
     </div>
   );
 }

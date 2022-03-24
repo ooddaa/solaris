@@ -129,10 +129,14 @@ ul {
   color: #444;
 }
 
+/* Header
+________________________________________________________*/
 .App-header {
   flex: 0 0;
 }
 
+/* Main
+________________________________________________________*/
 .App-main {
   width: 100%;
   margin: 0 auto;
@@ -191,8 +195,6 @@ ________________________________________________________*/
   color: var(--black);
 }
 
-
-
 /* File Card
 ________________________________________________________*/
 .file-card {
@@ -205,7 +207,7 @@ ________________________________________________________*/
 /* File Card HEADER
 ________________________*/
 .file-card__header {
-  border: black .0005rem solid;
+  border: black 0.0005rem solid;
   background-color: wheat;
 }
 
@@ -213,23 +215,22 @@ ________________________*/
 ________________________*/
 .file-card__body {
   display: flex;
-  border: green .0005rem solid;
+  border: green 0.0005rem solid;
   background-color: white;
 }
-
 
 /* File Card LEFT side
 ________________________*/
 .file-card__body__left-side {
-  border: rgb(0, 38, 128) .0005rem solid;
-  width: 25%
+  border: rgb(0, 38, 128) 0.0005rem solid;
+  width: 25%;
 }
 
 /* File Card CENTER side
 ________________________*/
 .file-card__body__center-side {
-  border: rgb(0, 87, 128) .0005rem solid;
-  width: 50%
+  border: rgb(0, 87, 128) 0.0005rem solid;
+  width: 50%;
 }
 
 .file-card-textarea {
@@ -240,11 +241,9 @@ ________________________*/
 /* File Card RIGHT side
 ________________________*/
 .file-card__body__right-side {
-  border: rgb(0, 87, 128) .0005rem solid;
-  width: 25%
+  border: rgb(0, 87, 128) 0.0005rem solid;
+  width: 25%;
 }
-
-
 
 /* File Card FOOTER
 ________________________*/
@@ -252,14 +251,13 @@ ________________________*/
   display: flex;
   align-items: center;
   justify-content: center;
-  border: rgba(233, 32, 116, 0.739) .0005rem solid;
+  border: rgba(233, 32, 116, 0.739) 0.0005rem solid;
   background-color: rgb(186, 211, 153);
 }
 
 .file-card * {
   /* border: red .005rem solid; */
 }
-
 
 /* Widgets
 ________________________________________________________*/
