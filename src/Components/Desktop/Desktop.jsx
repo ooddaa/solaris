@@ -6,7 +6,7 @@ function Desktop({ children }) {
    * @todo hash child's props as key to draggable
    */
   return (
-    <>
+    <div className="desktop">
       {children.map(({ Component, props = {} }, idx) => {
         return (
           <Draggable key={props && (props.key || idx)}>
@@ -14,7 +14,7 @@ function Desktop({ children }) {
           </Draggable>
         );
       })}
-    </>
+    </div>
   );
 }
 

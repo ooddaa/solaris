@@ -30,8 +30,6 @@ class Draggable extends React.Component {
   }
 
   handleDragStart = (e) => {
-    // log(e);
-    // log(e.target.getBoundingClientRect());
     const {
       x, // left
       y, // top
@@ -43,7 +41,6 @@ class Draggable extends React.Component {
 
     e.target.style.position = "absolute";
     this.setState({
-      // className: [...this.state.className, "is-absolute"],
       dragging: true,
       x,
       y,
@@ -52,7 +49,6 @@ class Draggable extends React.Component {
       mouseX,
       mouseY,
     });
-    // log(this.state.className);
   };
 
   handleDrag = (e) => {
