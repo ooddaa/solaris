@@ -56,9 +56,10 @@ class Draggable extends React.Component {
   };
 
   handleDrag = (e) => {
-    // log("handleDrag");
-    // log(e);
+    /* don't let users drag elements out of viewport */
     if (e.clientX <= 0 || e.clientY <= 0) return false;
+
+    /* begin dragging,  */
     this.setState({
       dragging: true,
       mouseX: e.clientX,
@@ -67,21 +68,19 @@ class Draggable extends React.Component {
   };
 
   handleDragEnd = (e) => {
-    // log("handleDragEnd");
+    /* don't let users drag elements out of viewport */
     if (e.clientX <= 0 || e.clientY <= 0) return false;
+
     const {
       x, // left
       y, // top
       width,
       height,
     } = e.target.getBoundingClientRect();
-    // log(e.target.getBoundingClientRect());
+
     let { top, left } = e.target.style;
-    // top = e.clientY;
     top = e.clientY - height / 2;
-    // left = e.clientX;
     left = e.clientX - width / 2;
-    log(top, left);
 
     this.setState({
       dragging: false,
@@ -95,50 +94,18 @@ class Draggable extends React.Component {
   };
 
   render() {
-    const {
-      // className,
-      dragging,
-      x,
-      y,
-      width,
-      height,
-      mouseX,
-      mouseY,
-      top,
-      left,
-    } = this.state;
+    const { top, left } = this.state;
     const { children, ...props } = this.props;
-
-    // const transform = dragging
-    //   ? `translateX(${mouseX - x - width / 2}px) translateY(${
-    //       mouseY - y - height / 2
-    //     }px)`
-    //   : //"none";
-    //     //`translateX(${x}px) translateY(${y}px)`;
-    //     `translateX(0px) translateY(0px)`;
-
-    // const transform = dragging
-    //   ? `translateX(${mouseX - x - width / 2}px) translateY(${
-    //       mouseY - y - height / 2
-    //     }px)`
-    //   : // : "none";
-    //     `translateX(${x}px) translateY(${y}px)`;
-
-    log(
-      `${dragging} ${x} ${y} width: ${width} height: ${height} mouseX: ${mouseX} mouseY: ${mouseY} top: ${top} left: ${left}`
-    );
 
     return (
       <div
         draggable={true}
-        className="draggable-item" // "draggable-item"
-        // className={className.join(" ")} // "draggable-item"
+        className="draggable-item"
         style={{
           cursor: "move",
           top,
           left,
           display: "inline-block",
-          border: "red 1px solid",
         }}
         onDragStart={this.handleDragStart}
         onDrag={this.handleDrag}
