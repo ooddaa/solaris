@@ -1,0 +1,58 @@
+.project {
+  width: 80px;
+  flex-shrink: 0;
+  margin: 0 10px;
+  height: 80px;
+  border-radius: 50%;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transform-origin: center;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.project-name {
+  position: absolute;
+  width: 140px;
+  text-align: center;
+  left: 50%;
+  top: 100%;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(0) scale(0.8);
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .project-name {
+    display: none;
+  }
+}
+
+.project:hover {
+  z-index: 2;
+}
+
+.project:hover > .project-name {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(10px) scale(1);
+}

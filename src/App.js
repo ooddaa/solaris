@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import MangoUI from "./Components/MangoUI";
 import Desktop from "./Components/Desktop/Desktop.jsx";
 import GenericProject from "./Components/Desktop/GenericProject";
+import Draggable from "./Components/Desktop/Draggable";
 
 const mockData = [
   {
@@ -20,16 +21,19 @@ const mockData = [
   },
 ];
 
-const projects = mockData.map((props) => {
-  return { Component: GenericProject(), props };
+const Project = GenericProject();
+
+const DraggableProject = Draggable(Project);
+
+const children = mockData.map((props) => {
+  return { Component: Project, props };
 });
 
 function App() {
   return (
     <div className="App">
-      <MangoUI />
-
-      {/* <Desktop children={projects} /> */}
+      {/* <MangoUI /> */}
+      <Desktop children={children} />
     </div>
   );
 }

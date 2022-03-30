@@ -1,126 +1,70 @@
 import React from "react";
-
 const log = (...args) => console.log(...args);
 
-class Draggable extends React.Component {
-  constructor({ props: { desktopBoundary }, children }) {
-    // constructor({
-    //   props: { x, y, width, height, mouseX, mouseY, top, left, desktopBoundary },
-    // }) {
-    super();
+function Draggable(WrappedComponent) {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        mouseDown: false, // dragging: boolean
+        mx: 0,
+        my: 0,
+        initX: 0,
+        initY: 0,
+        x: 0,
+        y: 0,
+      };
 
-    // log(props);
-    this.state = {
-      // className,
-      dragging: false,
-      // x: props.x,
-      // y: props.y,
-      // width: props.width,
-      // height,
-      // mouseX,
-      // mouseY,
-      // top,
-      // left,
-      desktopBoundary,
+      this.handleMouseUp = this.handleMouseUp.bind(this);
+      this.handleMouseMove = this.handleMouseMove.bind(this);
+      this.handleMouseDown = this.handleMouseDown.bind(this);
+    }
+
+    componentDidMount() {
+      document.addEventListener("mousemove", this.handleMouseMove);
+    }
+
+    handleMouseMove = (e) => {
+      if (this.state.mouseDown) {
+        this.setState({
+          /* take the last known x,y position and increment
+          by how much cursor has travelled */
+          x: this.state.initX + (e.pageX - this.state.mx),
+          y: this.state.initY + (e.pageY - this.state.my),
+        });
+      }
     };
 
-    // log(this.state.desktopBoundary());
-  }
+    handleMouseDown(e) {
+      this.setState({
+        /* record mouse position at dragStart */
+        mx: e.pageX,
+        my: e.pageY,
+        /* x and y are delta values to move element by*/
+        initX: this.state.x,
+        initY: this.state.y,
+        mouseDown: true,
+      });
+    }
 
-  handleDragStart = (e) => {
-    const {
-      x, // left
-      y, // top
-      width,
-      height,
-    } = e.target.getBoundingClientRect();
-    log("start", e.target.getBoundingClientRect());
-    let mouseX = e.clientX,
-      mouseY = e.clientY;
+    handleMouseUp = (e) => {
+      this.setState({ mouseDown: false });
+    };
 
-    e.target.style.position = "absolute";
-    this.setState({
-      dragging: true,
-      x,
-      y,
-      width,
-      height,
-      mouseX,
-      mouseY,
-    });
+    render() {
+      const myStyle = {
+        transform: `translate(${this.state.x}px, ${this.state.y}px)`,
+      };
+      return (
+        <WrappedComponent
+          onMouseDown={this.handleMouseDown}
+          onMouseUp={this.handleMouseUp}
+          style={myStyle}
+          {...this.props}
+        />
+      );
+    }
   };
-
-  handleDrag = (e) => {
-    /* don't let users drag elements out of viewport */
-    if (e.clientX <= 0 || e.clientY <= 0) return false;
-    // if (
-    //   e.clientX <= this.state.desktopBoundary.x ||
-    //   e.clientY <= this.state.desktopBoundary.y
-    // )
-    // return false;
-
-    /* begin dragging,  */
-    this.setState({
-      dragging: true,
-      mouseX: e.clientX,
-      mouseY: e.clientY,
-    });
-  };
-
-  handleDragEnd = (e) => {
-    /* don't let users drag elements out of viewport */
-    if (e.clientX <= 0 || e.clientY <= 0) return false;
-
-    const {
-      x, // left
-      y, // top
-      width,
-      height,
-    } = e.target.getBoundingClientRect();
-    log("end", e.target.getBoundingClientRect());
-
-    let { top, left } = e.target.style;
-    // top = e.clientY;
-    // left = e.clientX;
-    top = e.clientY - height;
-    left = e.clientX - width;
-    // top = e.clientY - height / 2;
-    // left = e.clientX - width / 2;
-
-    this.setState({
-      dragging: false,
-      mouseX: e.clientX,
-      mouseY: e.clientY,
-      x,
-      y,
-      top,
-      left,
-    });
-  };
-
-  render() {
-    const { top, left } = this.state;
-    const { children, ...props } = this.props;
-
-    return (
-      <div
-        draggable={true}
-        className="draggable-item"
-        style={{
-          cursor: "move",
-          top,
-          left,
-          display: "inline-block",
-        }}
-        onDragStart={this.handleDragStart}
-        onDrag={this.handleDrag}
-        onDragEnd={this.handleDragEnd}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
 }
 
 export default Draggable;
