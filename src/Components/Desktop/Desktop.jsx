@@ -13,7 +13,7 @@ function Desktop({ children /* , props: { myStyle = {} } = {}  */ }) {
       {children.map(({ Component, props = {} }, idx) => {
         const DraggableComponent = Draggable(Component);
         return (
-          <DraggableComponent key={props && (props.key || idx)} {...props} />
+          <DraggableComponent key={(props && props.key) || idx} {...props} />
         );
       })}
     </div>
