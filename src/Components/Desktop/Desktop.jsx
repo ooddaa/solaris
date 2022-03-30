@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Draggable from "./Draggable";
 
 function Desktop({ children }) {
+  /* https://reactjs.org/docs/hooks-reference.html#useref */
+  const DesktopRef = useRef(null);
+
+  // const [desktopBoundary, setDesktopBoundary] = useState(
+  //   document.getElementsByClassName("desktop")[0].getBoundingClientRect()
+  // );
+  // const desktop = document.getElementsByClassName("desktop")[0];
+  // setDesktopBoundary(desktop.getBoundingClientRect());
+  // useEffect(() => {
+  //   /* get Desktop's measurements */
+  //   const desktop = document.getElementsByClassName("desktop")[0];
+  //   setDesktopBoundary(desktop.getBoundingClientRect());
+  // }, [desktopBoundary]);
+  // useEffect(() => {
+  //   console.log(DesktopRef.current.getBoundingClientRect());
+  // });
+  function getRef() {
+    return DesktopRef;
+  }
   /**
    * @todo hash child's props as key to draggable
    */
   return (
-    <div className="desktop">
+    <div className="desktop" ref={DesktopRef}>
       {children.map(({ Component, props = {} }, idx) => {
         return (
-          <Draggable key={props && (props.key || idx)}>
+          <Draggable
+            key={props && (props.key || idx)}
+            props={{
+              ...props,
+              // lol: "lol",
+              // desktopBoundary: DesktopRef.current.getBoundingClientRect(),
+              // desktopBoundary: DesktopRef.current,
+              // desktopBoundary: getRef,
+            }}
+            // {...props}
+          >
             <Component {...props} />
           </Draggable>
         );

@@ -7,7 +7,7 @@ function AppWorkspace({ acceptedFiles }) {
     <div className="App-workspace">
       {/* <AppWorkspaceHeader/> */}
       <AppWorkspaceBody acceptedFiles={acceptedFiles} />
-      <AppWorkspaceFooter />
+      {/* <AppWorkspaceFooter /> */}
     </div>
   );
 }

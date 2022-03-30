@@ -1,5 +1,6 @@
 import FileCard from "./Components/FileCard.jsx";
 import Desktop from "../../../../Components/Desktop/Desktop.jsx";
+import GenericProject from "../../../../Components/Desktop/GenericProject";
 
 function AppWorkspaceBody({ acceptedFiles = [] }) {
   const children = acceptedFiles.map((file) => {
@@ -11,10 +12,23 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
       },
     };
   });
+  const data = [
+    {
+      Component: GenericProject(),
+      props: {
+        name: "Lolotron",
+        className: "lol",
+        imgsrc: "https://source.unsplash.com/900x900",
+        wtf: "lol_wtf",
+        key: "a1",
+      },
+    },
+  ];
 
   return (
     <div className="App-workspace-body">
-      <Desktop children={children} />
+      {/* <Desktop children={children} /> */}
+      <Desktop children={data} />
     </div>
   );
 }
