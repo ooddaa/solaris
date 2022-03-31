@@ -24,11 +24,17 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
       },
     },
   ];
-
+  const myStyle = {
+    top: "50px",
+    left: "150px",
+    width: "750px",
+    height: "500px",
+    border: "2px green solid",
+  };
   return (
     <div className="App-workspace-body">
-      {/* <Desktop children={children} /> */}
-      <Desktop children={data} />
+      <Desktop myStyle={myStyle} children={children} />
+      {/* <Desktop children={data} /> */}
     </div>
   );
 }

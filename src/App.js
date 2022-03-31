@@ -32,8 +32,8 @@ const children = mockData.map((props) => {
 function App() {
   return (
     <div className="App">
-      {/* <MangoUI /> */}
-      <Desktop children={children} />
+      <MangoUI />
+      {/* <Desktop children={children} /> */}
     </div>
   );
 }
