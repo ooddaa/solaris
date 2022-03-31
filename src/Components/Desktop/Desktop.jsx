@@ -14,7 +14,21 @@ function Desktop({ children, myStyle }) {
    * @todo hash child's props as key to draggable
    */
   return (
-    <div className="desktop" ref={measureRef} style={myStyle}>
+    <div
+      className="desktop"
+      ref={measureRef}
+      style={{
+        // position: "absolute",
+        // top: "200px",
+        // left: "200px",
+        overflow: "hidden",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        display: "flex",
+        border: "2px yellow solid",
+        ...myStyle,
+      }}
+    >
       {children.map(({ Component, props = {} }, idx) => {
         const DraggableComponent = Draggable(Component);
         return (

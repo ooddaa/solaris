@@ -1,0 +1,6 @@
+.file-card {
+  z-index: 1;
+}
+.file-card:hover {
+  z-index: 2;
+}
