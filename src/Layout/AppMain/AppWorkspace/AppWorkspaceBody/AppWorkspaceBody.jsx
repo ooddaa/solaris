@@ -14,21 +14,16 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
     };
   });
 
-  // const [myStyle, setMyStyle] = useState(null);
-  // const [dimensions, setDimensions] = useState(null);
-  // const myDimensions = useCallback((node) => {
-  //   if (node !== null) {
-  //     let dimensions = node.getBoundingClientRect();
-  //     setDimensions(dimensions);
-  //     setMyStyle({
-  //       top: `${dimensions.top + 10}px`,
-  //       left: `${dimensions.left + 10}px`,
-  //       width: `${dimensions.width - 10}px`,
-  //       height: `${dimensions.height - 10}px`,
-  //       border: "2px green solid",
-  //     });
-  //   }
-  // }, []);
+  const fileCards = [
+    {
+      Component: FileCard,
+      props: {
+        key: `a1`,
+        file: {},
+      },
+    },
+  ];
+
   const myStyle = {
     position: "relative",
     height: "100%",
@@ -36,11 +31,9 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
   };
 
   return (
-    <div
-      className="App-workspace-body"
-      // ref={myDimensions}
-    >
-      <Desktop myStyle={myStyle} children={children} />
+    <div className="App-workspace-body">
+      {/* <Desktop myStyle={myStyle} children={children} /> */}
+      <Desktop myStyle={myStyle} children={fileCards} />
     </div>
   );
 }
