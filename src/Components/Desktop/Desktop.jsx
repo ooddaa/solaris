@@ -22,11 +22,11 @@ function Desktop({ children, myStyle, draggable = true }) {
         justifyContent: "space-evenly",
         alignItems: "center",
         display: "flex",
-        // border: "2px yellow solid",
+        border: "2px yellow solid",
         ...myStyle,
       }}
     >
-      {children.map(({ Component, props = {} }, idx) => {
+      {children.map(({ Component, props = {}, ref }, idx) => {
         let Child = draggable ? Draggable(Component) : Component;
         return (
           <Child
