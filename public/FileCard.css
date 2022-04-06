@@ -4,15 +4,11 @@ ________________________________________________________*/
   display: flex;
   flex-direction: row;
   z-index: 1;
-  background: rgb(255, 193, 193);
   background: rgb(255, 255, 255);
   border-radius: 15px;
   border: 1px grey solid;
-}
-
-.file-card > div {
-  /* margin: 10px; */
-  /* padding: 10px; */
+  /* resize: both;
+  overflow: auto; */
 }
 
 .file-card:hover {
@@ -58,7 +54,7 @@ ________________________________________________________*/
 }
 
 /* File Card DESCRIPTION
-________________________*/
+________________________________________________________*/
 .file-card-description {
   width: 250px;
   height: auto;
@@ -78,7 +74,7 @@ ________________________*/
 }
 
 /* File Card ACTIONS
-________________________*/
+________________________________________________________*/
 .file-card-actions {
   width: 450px;
   height: 350px;

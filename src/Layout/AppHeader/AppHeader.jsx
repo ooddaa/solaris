@@ -6,7 +6,7 @@ import HeaderWithSearch from "./MantineHeaders/HeaderWithSearch";
 const links = [
   {
     link: "#1",
-    label: "Home",
+    label: "Desktop",
   },
   {
     link: "#2",
@@ -16,54 +16,6 @@ const links = [
     link: "#3",
     label: "People",
   },
-  // {
-  //   link: "#1",
-  //   label: "Learn",
-  //   links: [
-  //     {
-  //       link: "/docs",
-  //       label: "Documentation",
-  //     },
-  //     {
-  //       link: "/resources",
-  //       label: "Resources",
-  //     },
-  //     {
-  //       link: "/community",
-  //       label: "Community",
-  //     },
-  //     {
-  //       link: "/blog",
-  //       label: "Blog",
-  //     },
-  //   ],
-  // },
-  // {
-  //   link: "/about",
-  //   label: "About",
-  // },
-  // {
-  //   link: "/pricing",
-  //   label: "Pricing",
-  // },
-  // {
-  //   link: "#2",
-  //   label: "Support",
-  //   links: [
-  //     {
-  //       link: "/faq",
-  //       label: "FAQ",
-  //     },
-  //     {
-  //       link: "/demo",
-  //       label: "Book a demo",
-  //     },
-  //     {
-  //       link: "/forums",
-  //       label: "Forums",
-  //     },
-  //   ],
-  // },
 ];
 
 function AppHeader() {

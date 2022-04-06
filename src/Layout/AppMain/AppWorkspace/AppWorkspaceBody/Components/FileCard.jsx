@@ -18,10 +18,11 @@ function FileCard({ file, ...rest }) {
         <div className="file-card-props__head">
           <div className="file-card-props__head__info">
             <ul>
-              <li>File name</li>
-              <li>Date</li>
+              <li>{name}</li>
+              <li>{lastModifiedDate?.toLocaleString() ?? "someDate"}</li>
               <li>Owner</li>
-              <li>Size</li>
+              <li>{size}</li>
+              <li>{type}</li>
             </ul>
           </div>
           <div className="file-card-props__head__edit-btn">

@@ -31,6 +31,7 @@ function Draggable(WrappedComponent) {
       if (this.state.mouseDown) {
         function getBoundedDistance(val, crd, dimensions) {
           /* in px - by how much element stays visible when user tries to hide it behind boundary */
+          // let PADDING = 0;
           let PADDING = 10;
           if (dimensions !== null) {
             if (crd === "x") {
@@ -48,7 +49,7 @@ function Draggable(WrappedComponent) {
           }
           return val;
         }
-
+        // log(this.state.dimensions);
         /**
          * take the last known x,y position and increment
          * by how much cursor has travelled

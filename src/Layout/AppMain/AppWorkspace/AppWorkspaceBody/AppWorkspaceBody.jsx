@@ -28,12 +28,13 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
     position: "relative",
     height: "100%",
     width: "100%",
+    flexDirection: "column",
   };
 
   return (
     <div className="App-workspace-body">
-      {/* <Desktop myStyle={myStyle} children={children} /> */}
-      <Desktop myStyle={myStyle} children={fileCards} />
+      <Desktop myStyle={myStyle} children={children} />
+      {/* <Desktop myStyle={myStyle} draggable={true} children={fileCards} /> */}
     </div>
   );
 }

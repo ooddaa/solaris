@@ -13,8 +13,8 @@ function AppWidgets({ handleDropzoneFiles }) {
         passiveMsg={`Drag 'n' drop some files here, or click to select files`}
       /> */}
       <MantineDropzone handleDrop={handleDropzoneFiles} />
-      <Form />
-      <Chat />
+      {/* <Form />
+      <Chat /> */}
     </div>
   );
 }
