@@ -7,13 +7,11 @@ ________________________________________________________*/
   background: rgb(255, 255, 255);
   border-radius: 15px;
   border: 1px grey solid;
-  /* resize: both;
-  overflow: auto; */
 }
 
-.file-card:hover {
+/* .file-card:hover {
   z-index: 2;
-}
+} */
 
 /* File Props
 ________________________________________________________*/

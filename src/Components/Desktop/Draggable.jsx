@@ -17,11 +17,12 @@ function Draggable(WrappedComponent) {
         y: 0,
         /* parent Desktop's dimensions */
         desktopDimensions: props.dimensions,
-
+        padding: props.padding ?? 25,
         /* WrappedComponent */
         wrappedComponent: null, // is set by componentDidMount
       };
 
+      this.handleClick = this.handleClick.bind(this);
       this.handleMouseUp = this.handleMouseUp.bind(this);
       this.handleMouseMove = this.handleMouseMove.bind(this);
       this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -48,6 +49,10 @@ function Draggable(WrappedComponent) {
 
         this.setState({ x, y });
       }
+    };
+    handleClick = (e) => {
+      // log("click");
+      // e.target.style.zIndex = 10;
     };
 
     handleMouseDown = (e) => {
@@ -79,23 +84,25 @@ function Draggable(WrappedComponent) {
       if (this.state.mouseDown === false) this.handleMouseUpOutOfBounds();
     };
 
-    normalizeX(x, padding = 25) {
+    normalizeX(x) {
       if (this.state.wrappedComponent == null) return x;
       let { offsetLeft, offsetWidth } = this.state.wrappedComponent;
-      let left = (offsetLeft + offsetWidth - padding) * -1;
+      let left = (offsetLeft + offsetWidth - this.state.padding) * -1;
       if (x <= left) return left;
-      let right = offsetLeft + offsetWidth - padding;
+      let right = offsetLeft + offsetWidth - this.state.padding;
       if (x >= right) return right;
       return x;
     }
 
-    normalizeY(y, padding = 25) {
+    normalizeY(y) {
       if (this.state.wrappedComponent == null) return y;
       let { offsetTop, offsetHeight } = this.state.wrappedComponent;
-      // log(offsetTop, offsetHeight);
-      let up = (offsetTop + offsetHeight - padding) * -1;
+      let { height } = this.state.desktopDimensions;
+
+      let up = (offsetTop + offsetHeight - this.state.padding) * -1;
       if (y <= up) return up;
-      let down = (offsetTop + offsetHeight) * 2 - padding;
+
+      let down = height - offsetTop - this.state.padding;
       if (y >= down) return down;
       return y;
     }
@@ -110,6 +117,7 @@ function Draggable(WrappedComponent) {
       return (
         <WrappedComponent
           ref={this.myRef}
+          onClick={this.handleClick}
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseLeave={this.handleMouseLeave}
