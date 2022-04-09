@@ -6,6 +6,7 @@ function Draggable(WrappedComponent) {
     constructor(props) {
       super(props);
       this.myRef = React.createRef();
+      let { incrementzindex, zindex, ...rest } = this.props;
       this.state = {
         /* mouse positions */
         mouseDown: false,
@@ -19,17 +20,15 @@ function Draggable(WrappedComponent) {
         desktopDimensions: props.dimensions,
         padding: props.padding ?? 25,
         /* WrappedComponent */
-        wrappedComponent: null, // is set by componentDidMount
+        wrappedComponent: null, // set by componentDidMount
+        rest,
       };
 
-      this.handleClick = this.handleClick.bind(this);
       this.handleMouseUp = this.handleMouseUp.bind(this);
       this.handleMouseMove = this.handleMouseMove.bind(this);
       this.handleMouseDown = this.handleMouseDown.bind(this);
       this.handleMouseLeave = this.handleMouseLeave.bind(this);
-
       this.handleMouseUpOutOfBounds = this.handleMouseUpOutOfBounds.bind(this);
-      this.normalizeX = this.normalizeX.bind(this);
     }
 
     componentDidMount() {
@@ -50,12 +49,17 @@ function Draggable(WrappedComponent) {
         this.setState({ x, y });
       }
     };
-    handleClick = (e) => {
-      // log("click");
-      // e.target.style.zIndex = 10;
-    };
 
     handleMouseDown = (e) => {
+      /* use current top zindex to style the dragged component 
+      as hovering over everything else and staying on top of the heap
+      when released */
+      this.myRef.current.style.zIndex = this.props?.zindex?.top ?? 0;
+      this.myRef.current.style.boxShadow = "5px 5px 5px grey";
+
+      /* let Desktop know of new top zindex */
+      this.props.incrementzindex();
+
       this.setState({
         /* record mouse position at dragStart relative to document */
         /* https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX */
@@ -70,6 +74,7 @@ function Draggable(WrappedComponent) {
 
     handleMouseUp = (e) => {
       this.setState({ mouseDown: false });
+      this.myRef.current.style.boxShadow = "none";
     };
 
     /**
@@ -85,18 +90,21 @@ function Draggable(WrappedComponent) {
     };
 
     normalizeX(x) {
-      if (this.state.wrappedComponent == null) return x;
-      let { offsetLeft, offsetWidth } = this.state.wrappedComponent;
+      if (this.myRef.current == null) return x;
+      let { offsetLeft, offsetWidth } = this.myRef.current;
+
       let left = (offsetLeft + offsetWidth - this.state.padding) * -1;
       if (x <= left) return left;
+
       let right = offsetLeft + offsetWidth - this.state.padding;
       if (x >= right) return right;
+
       return x;
     }
 
     normalizeY(y) {
-      if (this.state.wrappedComponent == null) return y;
-      let { offsetTop, offsetHeight } = this.state.wrappedComponent;
+      if (this.myRef.current == null) return y;
+      let { offsetTop, offsetHeight } = this.myRef.current;
       let { height } = this.state.desktopDimensions;
 
       let up = (offsetTop + offsetHeight - this.state.padding) * -1;
@@ -104,6 +112,7 @@ function Draggable(WrappedComponent) {
 
       let down = height - offsetTop - this.state.padding;
       if (y >= down) return down;
+
       return y;
     }
 
@@ -123,7 +132,7 @@ function Draggable(WrappedComponent) {
           onMouseLeave={this.handleMouseLeave}
           style={myStyle}
           {...{
-            ...this.props,
+            ...this.state.rest,
           }}
         />
       );

@@ -28,7 +28,7 @@ function AppMain() {
       <AppWorkspace acceptedFiles={acceptedFiles} />
 
       {/* Dropzone on the right upper corner is where files get dropped */}
-      {/* <AppWidgets handleDropzoneFiles={handleDropzoneFiles}/> */}
+      <AppWidgets handleDropzoneFiles={handleDropzoneFiles} />
     </div>
   );
 }

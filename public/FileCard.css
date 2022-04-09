@@ -3,7 +3,7 @@ ________________________________________________________*/
 .file-card {
   display: flex;
   flex-direction: row;
-  z-index: 1;
+  z-index: 0;
   background: rgb(255, 255, 255);
   border-radius: 15px;
   border: 1px grey solid;
