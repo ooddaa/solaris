@@ -47,8 +47,7 @@ function AppWorkspaceBody({ acceptedFiles = [] }) {
 
   return (
     <div className="App-workspace-body">
-      <Desktop myStyle={myStyle} children={children} />
-      {/* <Desktop myStyle={myStyle} draggable={true} children={fileCards} /> */}
+     <Desktop myStyle={myStyle} draggable={true} children={fileCards} /> 
     </div>
   );
 }
